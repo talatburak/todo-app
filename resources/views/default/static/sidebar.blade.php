@@ -1,15 +1,15 @@
 @section('sidebar')
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item {{ (strpos(Route::currentRouteName(), 'index') !== false) ? 'menu-open' : '' }}">
-            <a href="{{route("index")}}" class="nav-link {{ (strpos(Route::currentRouteName(), 'index') !== false) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    Anasayfa
-                </p>
-            </a>
-        </li>
-        <li class="nav-header">Görevler</li>
+            <li class="nav-item {{ (strpos(Route::currentRouteName(), 'index') !== false) ? 'menu-open' : '' }}">
+                <a href="{{route("index")}}" class="nav-link {{ (strpos(Route::currentRouteName(), 'index') !== false) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Anasayfa
+                    </p>
+                </a>
+            </li>
+            <li class="nav-header">Görevler</li>
             <li class="nav-item {{ (strpos(Route::currentRouteName(), 'task.create') !== false) ? 'menu-open' : '' }}">
                 <a href="{{route("task.create")}}" class="nav-link {{ (strpos(Route::currentRouteName(), 'task.create') !== false) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-calendar-alt"></i>
@@ -32,6 +32,23 @@
                 <p>
                     Bitmiş Görevler
                 </p>
+                </a>
+            </li>
+            <li class="nav-header">Günlük</li>
+            <li class="nav-item {{ (strpos(Route::currentRouteName(), 'daily.index') !== false) ? 'menu-open' : '' }}">
+                <a href="{{route("daily.index")}}" class="nav-link {{ (strpos(Route::currentRouteName(), 'daily.index') !== false) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <p>
+                        Günlük Kayıtlar
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item {{ (strpos(Route::currentRouteName(), 'daily.history') !== false) ? 'menu-open' : '' }}">
+                <a href="{{route("daily.history")}}" class="nav-link {{ (strpos(Route::currentRouteName(), 'daily.history') !== false) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <p>
+                        Geçmiş Kayıtlar
+                    </p>
                 </a>
             </li>
         </ul>

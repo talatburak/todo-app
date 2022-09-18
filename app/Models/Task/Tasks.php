@@ -9,6 +9,8 @@ class Tasks extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "task_id";
+
     protected $fillable = [
         'task_name',
         'task_desc',

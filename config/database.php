@@ -91,6 +91,12 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://talatburak:tq26uipR6Kbr0YWq@cluster0.b14vcx8.mongodb.net/?retryWrites=true&w=majority'),
+            'database' => 'deneme',
+        ],
+       
     ],
 
     /*

@@ -43,7 +43,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="gorev_basligi">Görev Başlığı</label>
-                                                    <input type="text" class="form-control" id="gorev_basligi" name="gorev_basligi" placeholder="Buraya görev başlığı gelecek. Çok uzun olmasın" required maxlength="50">
+                                                    <input type="text" class="form-control" id="gorev_basligi" name="gorev_basligi" autocomplete="off" placeholder="Buraya görev başlığı gelecek. Çok uzun olmasın" required maxlength="50">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -82,9 +82,9 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label> Teslim / Bitiş Tarihi </label>
+                                                    <label> Teslim / Bitiş Tarihi <code>Yapacağın günü de girebilirsin.</code></label>
                                                     <div class="input-group date">
-                                                        <input type="text" class="form-control" id="bitistarihi" name="bitistarihi" placeholder="Teslim / Bitiş tarihi girebilirsin" required/>
+                                                        <input type="text" class="form-control" id="bitistarihi" name="bitistarihi" autocomplete="off" placeholder="Teslim / Bitiş tarihi girebilirsin" required/>
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                         </div>
@@ -134,9 +134,24 @@
             });
 
             $('#gorev_form').on('submit', function() {
+                var bthis = this;
                 var formData = new FormData($(this)[0]);
-                sendAjaxRequest('{{route("task.save")}}', formData, {}, function(error, success) {
-                    console.log(error, success);
+                sendAjaxRequest('{{route("task.save")}}', formData, {}, function(error, res) {
+                    if(error) {
+                        toastr["error"](error);
+                        return;
+                    }
+
+                    if(res.status) {
+                        toastr["success"](res.message);
+                        $(bthis).trigger("reset");
+                        
+                        /**
+                         * Sonrasında sağ altta eklenilen görevler diye açılır pencere açıp görev detayına gitmesi sağlanacak
+                        */
+                    } else {
+                        toastr["error"](res.message);
+                    }
                 });
             });
         })

@@ -34,6 +34,28 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+
+        $this->renderable(function(NotAjaxRequest $e, $request) {
+            return response()->json([
+                "status" => false,
+                "message" => $e->getMessage()
+            ]);
+        });
+
+        $this->renderable(function(AuthException $e, $request) {
+            return response()->json([
+                "status" => false,
+                "message" => "Yetkilendirme başarısız, lütfen tekrar giriş yapınız."
+            ]);
+        });
+
+        $this->renderable(function(DatabaseException $e, $request) {
+            return response()->json([
+                "status" => false,
+                "message" => "Veri eklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.."
+            ]);
+        });
+
         $this->reportable(function (Throwable $e) {
             //
         });

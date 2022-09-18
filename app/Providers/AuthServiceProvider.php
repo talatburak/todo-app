@@ -25,6 +25,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        
+
+        /**
+         * Herşeyden önce bunu kullanırsak ve geçerli ise bundan sonra gelenleri görmezden geliyor 
+         */
+        Gate::before(function ($user, $ability) {
+            if ($user->isAdministrator()) {
+                return true;
+            }
+        });
+        
+        
         //
     }
 }

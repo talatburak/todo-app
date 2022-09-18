@@ -10,9 +10,23 @@
     <link rel="stylesheet" href="{{ asset('default/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('default/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!--Toastr-->
+    <link rel="stylesheet" href="{{ asset('default/plugins/toastr/toastr.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('default/css/adminlte.min.css')}}">
     <title>@yield('title')</title>
+
+    <style>
+        .jconfirm-box.loading{
+            background: #444 !important;
+        }
+        .jconfirm-box.loading::before{
+            background: #444 !important;
+        }
+        .display-none {
+            display: none;
+        }
+    </style>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
@@ -231,10 +245,30 @@
     <!-- overlayScrollbars -->
 
     <script src="{{ asset('default/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <!--Toastr-->
+    <script src="{{ asset('default/plugins/toastr/toastr.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('default/js/adminlte.js')}}"></script>
-
     
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-left",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
     @yield('script')
     <!-- PAGE PLUGINS -->
     <!-- jQuery Mapael -->
